@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingCube : MonoBehaviour {
+public class MovingCube : Cube {
     public static MovingCube CurrentCube { get; private set; }
+    public static Cube LastCube;
+
     private bool isMoving = true;
 
     [SerializeField]
