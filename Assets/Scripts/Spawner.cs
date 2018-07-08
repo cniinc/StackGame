@@ -11,6 +11,6 @@ public class Spawner : MonoBehaviour {
     public void Spawn()
     {
         print("Spawn");
-        Instantiate(movingCube);
+        Instantiate(movingCube, transform.position, Quaternion.identity);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingCube : Cube {
     public static MovingCube CurrentCube { get; private set; }
     public static Cube LastCube;
+    public static int NumCubes = 1;
 
     private bool isMoving = true;
 
@@ -19,7 +20,15 @@ public class MovingCube : Cube {
 
     internal void Stop()
     {
+        //actual stopping
         isMoving = false;
+        name = "Cube" + NumCubes;
+        NumCubes++;
+
+        //cutting 
+
+        //set to last cube
+        LastCube = this;
     }
     
 	void Update () {

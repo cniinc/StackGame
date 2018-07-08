@@ -10,11 +10,10 @@ public class GameManager : MonoBehaviour {
     private Cube startCube;
 
     
-    public static Cube LastCube;
-
+    
     private void Awake()
     {
-        LastCube = startCube;
+        MovingCube.LastCube = startCube;
     }
 
     void Update () {
@@ -25,7 +24,7 @@ public class GameManager : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.F))
         {
-            print("test spawn");
+            Spawners[0].Spawn();
         }
 	}
 
