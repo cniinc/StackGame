@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,12 +43,27 @@ public class MovingCube : Cube {
     {
         
         float hangover = transform.position.z - LastCube.transform.position.z;
+        float direction = hangover > 0 ? 1f : -1f;
 
         float newZsize = LastCube.transform.localScale.z - Mathf.Abs(hangover);
-        float fallingBlockSize = transform.localScale.z - newZsize;
+        float fallingBlockZSize = transform.localScale.z - newZsize;
 
         float newZPosition = LastCube.transform.position.z + (hangover / 2);
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newZsize);
-        transform.position = new Vector3(transform.position.x, transform.position.y, newZPosition); 
+        transform.position = new Vector3(transform.position.x, transform.position.y, newZPosition);
+
+        float cubeEdge = (transform.position.z + (newZsize / 2))* direction;
+        float fallingBlockZPos = (cubeEdge + fallingBlockZSize / 2f) * direction;
+        
+        spawnDropCube(fallingBlockZPos, fallingBlockZSize);
+    }
+
+    private void spawnDropCube(float fallingBlockZPos, float fallingBlockZSize)
+    {
+        var dropCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        dropCube.GetComponent<Renderer>().material.color = Color.red;
+
+        dropCube.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, fallingBlockZSize);
+        dropCube.transform.position = new Vector3(transform.position.x, transform.position.y, fallingBlockZPos);
     }
 }

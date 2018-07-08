@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             MovingCube.CurrentCube.Stop();
+            moveUp();
             spawnNext();
-            cameraUpdate();
         }
 
         if(Input.GetKeyDown(KeyCode.F))
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-    private void cameraUpdate()
+    private void moveUp()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
     }
