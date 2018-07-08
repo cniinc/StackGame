@@ -20,13 +20,19 @@ public class GameManager : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             MovingCube.CurrentCube.Stop();
+            spawnNext();
         }
 
         if(Input.GetKeyDown(KeyCode.F))
         {
-            Spawners[0].Spawn();
+            spawnNext();
         }
 	}
+
+    void spawnNext()
+    {
+        Spawners[0].Spawn();
+    }
 
 
 
