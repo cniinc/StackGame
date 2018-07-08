@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33489172415244422}
   - component: {fileID: 65517377619306328}
   - component: {fileID: 23051371722470742}
+  - component: {fileID: 114933949337645138}
   m_Layer: 0
   m_Name: MovingCube
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005752765708654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.159, y: 0.563, z: 0}
+  m_LocalPosition: {x: 0, y: 0.563, z: -1.373}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +92,19 @@ BoxCollider:
   m_GameObject: {fileID: 1005752765708654}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114933949337645138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005752765708654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139c36172e93ae84b8725f615cb281cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1

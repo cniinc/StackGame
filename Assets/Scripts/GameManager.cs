@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour {
         {
             MovingCube.CurrentCube.Stop();
             spawnNext();
+            cameraUpdate();
         }
 
         if(Input.GetKeyDown(KeyCode.F))
@@ -28,6 +30,11 @@ public class GameManager : MonoBehaviour {
             spawnNext();
         }
 	}
+
+    private void cameraUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+    }
 
     void spawnNext()
     {
