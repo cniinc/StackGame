@@ -9,7 +9,8 @@ public class MovingCube : Cube {
     public static int NumCubes = 1;
 
     private bool isMoving = true;
-
+    [SerializeField]
+    float reverseDistance = 1.25f;
     [SerializeField]
     private float moveSpeed = 1;
 
@@ -36,6 +37,11 @@ public class MovingCube : Cube {
 	void Update () {
         if(isMoving)
         transform.position += transform.forward * Time.deltaTime * moveSpeed;
+
+        float travelDistance = transform.position.z - LastCube.transform.position.z;
+
+        if (travelDistance > reverseDistance || travelDistance < -1f*(reverseDistance))
+            moveSpeed *= -1;
 
 	}
 
