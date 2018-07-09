@@ -38,7 +38,9 @@ public class MovingCube : Cube {
         if(isMoving)
         transform.position += transform.forward * Time.deltaTime * moveSpeed;
 
-        float travelDistance = transform.position.z - LastCube.transform.position.z;
+        //setting to StartCube (i.e. 0,0,0) for now
+        //float travelDistance = transform.position.z - LastCube.transform.position.z;
+        float travelDistance = transform.position.z;
 
         if (travelDistance > reverseDistance || travelDistance < -1f*(reverseDistance))
             moveSpeed *= -1;
@@ -66,10 +68,17 @@ public class MovingCube : Cube {
 
     private void spawnDropCube(float fallingBlockZPos, float fallingBlockZSize)
     {
-        var dropCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject dropCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         dropCube.GetComponent<Renderer>().material.color = Color.red;
 
         dropCube.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, fallingBlockZSize);
         dropCube.transform.position = new Vector3(transform.position.x, transform.position.y, fallingBlockZPos);
+
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.transform.position = dropCube.transform.position;
+        sphere.transform.localScale = new Vector3(.1f, .1f, .1f);
+
+        dropCube.name = "Drop Cube";
+
     }
 }
